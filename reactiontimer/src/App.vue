@@ -1,11 +1,13 @@
 <template>
  <h1>Ninja Reacton Time</h1>
  <button @click="start" :disabled="isPlaying">play</button>
- <Block v-if="isPlaying" :delay='delay'/>
+ <Block v-if="isPlaying" :delay='delay' @end='endGame'/>
+<Results v-if="showResults" :score="score"/>
 </template>
 
 <script>
 import Block from './components/Block.vue'
+import Results from './components/Results.vue'
 
 export default {
   name: "App",
@@ -15,7 +17,9 @@ export default {
   data(){
     return{
       isPlaying:false,
-      delay:null
+      delay:null,
+      score:null,
+      showResults:false
 
     }
 
@@ -27,6 +31,12 @@ export default {
       console.log(this.delay)
 
     }
+  },
+  endGame(reactionTime){
+    this.score=reactionTime
+    this.isPlaying=false
+    this.showResults=true
+
   }
 };
 </script>
