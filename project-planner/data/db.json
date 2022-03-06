@@ -4,13 +4,19 @@
       "id": 1,
       "title": "create new homepage banner",
       "details": "lorem ipsum",
-      "complete": true
+      "complete": false
     },
     {
       "id": 2,
       "title": "Make Marketing email",
       "details": "lorem ipsum",
-      "complete": true
+      "complete": false
+    },
+    {
+      "title": "Create a Wesite with vuejs",
+      "details": "It is going to be awesome",
+      "complete": false,
+      "id": 3
     }
   ]
 }
