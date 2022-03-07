@@ -1,22 +1,29 @@
 <template>
-  <div v-if="projects.length">
-    <div v-for="project in projects" :key="project.id">
-      <SingleProject :project="project" @delete="handleDelete" @complete="handleComplete"/>
+  <div class="home">
+    <FilterNav @filterChange="current=$event" :current="curent"/>
+    <div v-if="projects.length">
+      <div v-for="project in projects" :key="project.id">
+        <SingleProject
+          :project="project"
+          @delete="handleDelete"
+          @complete="handleComplete"
+        />
+      </div>
     </div>
-  
   </div>
-  
 </template>
 
 <script>
 import SingleProject from "../components/SingleProject.vue";
+import FilterNav from "../components/FilterNav.vue";
 
 export default {
   name: "Home",
-  components: { SingleProject },
+  components: { SingleProject, FilterNav },
   data() {
     return {
       projects: [],
+      curent:'all'
     };
   },
   mounted() {
@@ -25,15 +32,14 @@ export default {
       .then((data) => (this.projects = data))
       .catch((err) => console.log(err.message));
   },
-  methods:{
-    handleDelete(id){
-      this.projects = this.projects.filter(project=>project.id!==id)
-
+  methods: {
+    handleDelete(id) {
+      this.projects = this.projects.filter((project) => project.id !== id);
     },
-    handleComplete(id){
-      let p = this.projects.find(project=>project.id=== id)
-      p.complete = !p.complete
-    }
-  }
+    handleComplete(id) {
+      let p = this.projects.find((project) => project.id === id);
+      p.complete = !p.complete;
+    },
+  },
 };
 </script>

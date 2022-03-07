@@ -2,9 +2,9 @@
   "projects": [
     {
       "id": 1,
-      "title": "create new homepage banner",
-      "details": "lorem ipsum",
-      "complete": false
+      "title": "create new homepage banner smartly",
+      "details": "yes with vue",
+      "complete": true
     },
     {
       "id": 2,
